@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PoSS.Models;
 
 namespace PoSS.Controllers
 {
@@ -10,25 +11,25 @@ namespace PoSS.Controllers
         // BO6.	As a business owner, I want to manage services provided by the business
 
         [HttpPost(Name = "CreateService")]
-        public IActionResult CreateService()
+        public IActionResult CreateService(Service service)
         {
             return Ok();
         }
 
         [HttpGet(Name = "GetService")]
-        public IActionResult GetService()
+        public ActionResult<Service> GetService(int id)
         {
-            return Ok();
+            return Ok(new Service());
         }
 
         [HttpPut(Name = "UpdateService")]
-        public IActionResult UpdateService()
+        public IActionResult UpdateService(Service service)
         {
             return Ok();
         }
 
         [HttpDelete(Name = "DeleteService")]
-        public IActionResult DeleteService()
+        public IActionResult DeleteService(int id)
         {
             return Ok();
         }

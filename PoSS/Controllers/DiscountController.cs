@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PoSS.Models;
 
 namespace PoSS.Controllers
 {
@@ -10,25 +11,25 @@ namespace PoSS.Controllers
         // BO7.	As a business owner, I want to create a discount so that certain items can be purchased at special price for a limited time, leading to increased sales.
 
         [HttpPost(Name = "CreateDiscount")]
-        public IActionResult CreateDiscount()
+        public IActionResult CreateDiscount(Discount discount)
         {
             return Ok();
         }
 
         [HttpGet(Name = "GetDiscount")]
-        public IActionResult GetDiscount()
+        public ActionResult<Discount> GetDiscount(int id)
         {
             return Ok();
         }
 
         [HttpPut(Name = "UpdateDiscount")]
-        public IActionResult UpdateDiscount()
+        public IActionResult UpdateDiscount(Discount discount)
         {
             return Ok();
         }
 
         [HttpDelete(Name = "DeleteDiscount")]
-        public IActionResult DeleteDiscount()
+        public IActionResult DeleteDiscount(int id)
         {
             return Ok();
         }
