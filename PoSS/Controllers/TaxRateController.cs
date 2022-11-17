@@ -1,37 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
+using PoSS.DTOs;
+using PoSS.Models;
 
 namespace PoSS.Controllers
 {
 
     [ApiController]
     [Route("[controller]/[action]")]
-    public class TaxRateController : ControllerBase
+    public class TaxRateController : CRUDController<TaxRate, TaxRateDto>
     {
-        // A1.	As an accountant, I want to create a new tax rate so that it can be reused across multiple products.
-        [HttpPost(Name = "CreateTaxRate")]
-        public IActionResult CreateTaxRate()
-        {
-            return Ok();
-        }
-
-        [HttpGet(Name = "GetTaxRate")]
-        public IActionResult GetTaxRate()
-        {
-            return Ok();
-        }
-
-        [HttpPut(Name = "UpdateTaxRate")]
-        public IActionResult UpdateTaxRate()
-        {
-            return Ok();
-        }
-
-        [HttpDelete(Name = "DeleteTaxRate")]
-        public IActionResult DeleteTaxRate()
-        {
-            return Ok();
-        }
-
         // A3.	As an accountant, I want to assign tax rate to products so that ordered products are automatically taxed according to the law.
         [HttpPost(Name = "AssignTaxRateToItem")]
         public IActionResult AssignTaxRateToItem()
