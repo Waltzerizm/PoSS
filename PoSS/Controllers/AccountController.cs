@@ -1,37 +1,38 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PoSS.DTOs;
 
 namespace PoSS.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class BusinessOwnerController : ControllerBase
+    public class AccountController : ControllerBase
     {
 
         // BO1.	As a business owner, I want to create a business account so that the system functionality is available to my business.
-        [HttpPost(Name = "CreateBusinessOwner")]
-        public IActionResult CreateBusinessOwner()
+        [HttpPost(Name = "CreateAccount")]
+        public IActionResult CreateAccount()
         {
             return Ok();
         }
 
         // BO2.	As a business owner, I want to access my business account so that I could use the functionality provided to my business.
-        [HttpGet(Name = "GetBusinessOwner")]
-        public IActionResult GetBusinessOwner()
+        [HttpGet(Name = "Authenticate")]
+        public ActionResult<string> Authenticate([FromBody] CredentialsDto credentials)
         {
-            return Ok();
+            return Ok("12345");
         }
 
         // BO3.	As a business owner, I want to update my business account details.
-        [HttpPut(Name = "UpdateBusinessOwner")]
-        public IActionResult UpdateBusinessOwner()
+        [HttpPut(Name = "UpdateAccount")]
+        public IActionResult UpdateAccount()
         {
             return Ok();
         }
 
         // BO4.	As a business owner, I want to delete my business account so that my business data is deleted from the system when I stop using the service.
-        [HttpDelete(Name = "DeleteBusinessOwner")]
-        public IActionResult DeleteBusinessOwner()
+        [HttpDelete(Name = "DeleteAccount")]
+        public IActionResult DeleteAccount()
         {
             return Ok();
         }
