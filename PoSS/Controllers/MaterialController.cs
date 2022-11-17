@@ -50,35 +50,5 @@ namespace PoSS.Controllers
         {
             return Ok();
         }
-
-        [HttpPost(Name = "AddMaterialToProduct/{id}")]
-        public IActionResult AddMaterialToProduct(int product_id, [FromBody] Material value, int quantity)
-        {
-            return Ok();
-        }
-
-        [HttpGet(Name = "GetProductMaterial")]
-        public IActionResult GetProductMaterial(int product_id, int material_id )
-        {
-            return Ok();
-        }
-
-        [HttpGet(Name = "GetProductMaterials/{id}")]
-        public IActionResult GetProductMaterials(int product_id)
-        {
-            return Ok();
-        }
-
-        [HttpPut(Name = "EditProductMaterial")]
-        public IActionResult EditBundleProduct(int product_id, int material_id, [FromBody] ProductMaterial value)
-        {
-            return Ok();
-        }
-
-        [HttpDelete(Name = "DeleteProductMaterial")]
-        public IActionResult DeleteBundleProduct(int product_id, int material_id)
-        {
-            return Ok();
-        }
     }
 }
