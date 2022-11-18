@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 
-namespace PoSS.Controllers
+namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
     [Route("[controller]/[action]")]

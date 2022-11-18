@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PoSS.Models.ProductModels;
 using System.Numerics;
 
-namespace PoSS.Controllers
+namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
     [Route("[controller]/[action]")]

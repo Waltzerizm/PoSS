@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 
-namespace PoSS.Controllers
+namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
@@ -20,7 +20,7 @@ namespace PoSS.Controllers
         }
 
         [HttpGet(Name = "GetProductMaterial")]
-        public IActionResult GetProductMaterial(int product_id, int material_id )
+        public IActionResult GetProductMaterial(int product_id, int material_id)
         {
             return Ok();
         }

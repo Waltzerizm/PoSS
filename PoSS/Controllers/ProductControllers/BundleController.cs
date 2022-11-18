@@ -4,7 +4,7 @@ using PoSS.Models.ProductModels;
 using System;
 using System.Numerics;
 
-namespace PoSS.Controllers
+namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
