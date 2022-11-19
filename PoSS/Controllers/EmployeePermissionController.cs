@@ -8,7 +8,7 @@ namespace PoSS.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class PermissionController : ControllerBase
+    public class EmployeePermissionController : ControllerBase
     {
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -42,7 +42,7 @@ namespace PoSS.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut]
-        public ActionResult UpdatePermission([FromBody] Permission newPermission)
+        public ActionResult UpdatePermission([FromBody] EmployeePermission newPermission)
         {
             return Ok();
         }

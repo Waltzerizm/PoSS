@@ -41,8 +41,7 @@ namespace PoSS.Controllers
             return Ok(A.New<TimeSlot>()); // return random generated item by id
         }
 
-        // As a service provider, I want to have an ability to book a time slot on behalf of a customer so that
-        // I can reserve time for a customer who calls by phone or visits a store. 
+        // As a service provider, I want to view all time slots that are assigned to me so that I can plan my agenda.  
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
@@ -58,6 +57,8 @@ namespace PoSS.Controllers
             return Ok(A.ListOf<TimeSlot>(10)); // return random generated item by id
         }
 
+        // As a service provider, I want to have an ability to book a time slot on behalf of a customer so that
+        // I can reserve time for a customer who calls by phone or visits a store. 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
