@@ -5,13 +5,13 @@ using GenFu;
 
 namespace PoSS.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class OrderStatusController : ControllerBase
     {
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetAllOrderStatus")]
+        [HttpGet]
         public ActionResult<OrderStatus> GetAllOrderStatus([FromQuery] int objectCount)
         {
             if (objectCount < 0)
@@ -27,7 +27,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetOrderStatusById")]
+        [HttpGet]
         public ActionResult<OrderStatus> GetOrderStatusById([FromQuery] int orderStatusId)
         {
             if (orderStatusId <= 0)
@@ -42,7 +42,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost("CreateOrderStatus")]
+        [HttpPost]
         public ActionResult CreateOrderStatus([FromBody] OrderStatus newOrderStatus)
         {
             return Ok();
@@ -50,7 +50,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPut("UpdateOrderStatus")]
+        [HttpPut]
         public ActionResult UpdateOrderStatus([FromBody] OrderStatus newOrderStatus)
         {
             return Ok();
@@ -58,7 +58,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpDelete("DeleteOrderStatus")]
+        [HttpDelete]
         public ActionResult DeleteOrderStatus([FromQuery] int orderStatusId)
         {
             if (orderStatusId <= 0)
@@ -73,7 +73,7 @@ namespace PoSS.Controllers
         // if I will not be able to provide the service due to unexpected issues. 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPatch("UpdateOrderStatus")]
+        [HttpPatch]
         public ActionResult UpdateOrderStatus([FromQuery] int orderStatusId, [FromBody] OrderStatusTypes newOrderStatus)
         {
             if (orderStatusId <= 0)

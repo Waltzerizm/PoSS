@@ -6,13 +6,13 @@ using GenFu;
 
 namespace PoSS.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class TimeSlotController : ControllerBase
     {
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetAllTimeSlots")]
+        [HttpGet]
         public ActionResult<TimeSlot> GetAllTimeSlots([FromQuery] int objectCount)
         {
             if (objectCount < 0)
@@ -28,7 +28,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetTimeSlotById")]
+        [HttpGet]
         public ActionResult<TimeSlot> GetTimeSlotById([FromQuery] int timeSlotId)
         {
             if (timeSlotId <= 0)
@@ -45,7 +45,7 @@ namespace PoSS.Controllers
         // I can reserve time for a customer who calls by phone or visits a store. 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetTimeSlotsByEmployeeId")]
+        [HttpGet]
         public ActionResult<TimeSlot> GetTimeSlotsByEmployeeId([FromQuery] int timeSlotId)
         {
             if (timeSlotId <= 0)
@@ -60,7 +60,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost("CreateTimeSlot")]
+        [HttpPost]
         public ActionResult CreateTimeSlot([FromBody] TimeSlot newTimeSlot)
         {
             return Ok();
@@ -68,7 +68,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPut("UpdateTimeSlot")]
+        [HttpPut]
         public ActionResult UpdateTimeSlot([FromQuery] int timeSlotId, [FromBody] TimeSlot newTimeSlot)
         {
             if (timeSlotId <= 0)
@@ -81,7 +81,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpDelete("DeleteTimeSlot")]
+        [HttpDelete]
         public ActionResult DeleteTimeSlot([FromQuery] int timeSlotId)
         {
             if (timeSlotId <= 0)

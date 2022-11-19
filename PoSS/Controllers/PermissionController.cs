@@ -6,13 +6,13 @@ using GenFu;
 
 namespace PoSS.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class PermissionController : ControllerBase
     {
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetAllPermissions")]
+        [HttpGet]
         public ActionResult<EmployeePermission> GetAllPermissions([FromQuery] int objectCount)
         {
             A.Configure<EmployeePermission>()
@@ -23,7 +23,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetPermissionById")]
+        [HttpGet]
         public ActionResult<EmployeePermission> GetPermissionById([FromQuery] int permissionId)
         {
             A.Configure<EmployeePermission>()
@@ -33,7 +33,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost("CreatePermission")]
+        [HttpPost]
         public ActionResult CreatePermission([FromBody] EmployeePermission newPermission)
         {
             return Ok();
@@ -41,7 +41,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPut("UpdatePermission")]
+        [HttpPut]
         public ActionResult UpdatePermission([FromBody] Permission newPermission)
         {
             return Ok();
@@ -49,7 +49,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpDelete("DeletePermission")]
+        [HttpDelete]
         public ActionResult DeletePermission([FromQuery] int permissionId)
         {
             return Ok();

@@ -4,13 +4,13 @@ using GenFu;
 
 namespace PoSS.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetAllEmployees")]
+        [HttpGet]
         public ActionResult<Employee> GetAllEmployees([FromQuery] int objectCount)
         {
             if (objectCount < 0)
@@ -26,7 +26,7 @@ namespace PoSS.Controllers
         
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("GetEmployeeById")]
+        [HttpGet]
         public ActionResult<Employee> GetEmployeeById([FromQuery] int employeeId)
         {
             if (employeeId <= 0)
@@ -42,7 +42,7 @@ namespace PoSS.Controllers
         // As an HR manager, I want to add a new employee to the system.
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost("CreateEmployee")]
+        [HttpPost]
         public ActionResult CreateEmployee([FromBody] Employee newObject)
         {
             return Ok();
@@ -51,7 +51,7 @@ namespace PoSS.Controllers
         // As an HR manager, I want to edit employee account details.
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPut("UpdateEmployee")]
+        [HttpPut]
         public ActionResult UpdateEmployee([FromBody] Employee newObject)
         {
             return Ok();
@@ -59,7 +59,7 @@ namespace PoSS.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpDelete("DeleteEmployee")]
+        [HttpDelete]
         public ActionResult DeleteEmployee([FromQuery] int employeeId)
         {
             if (employeeId <= 0)
@@ -73,7 +73,7 @@ namespace PoSS.Controllers
         // As an HR manager I want to hide old employee accounts.
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPatch("HideEmployee")]
+        [HttpPatch]
         public ActionResult HideEmployee([FromQuery] int employeeId, [FromBody] DateTime date)
         {
             if (employeeId <= 0)
@@ -87,7 +87,7 @@ namespace PoSS.Controllers
         // As an HR manager I want to assign employee account permissions so that promoted employees would have additional access rights.
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPatch("ChangeEmployeePermissions")]
+        [HttpPatch]
         public ActionResult ChangeEmployeePermissions([FromQuery] int employeeId, [FromQuery] int permissionId)
         {
             if (employeeId <= 0 && permissionId <= 0)
