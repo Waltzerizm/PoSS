@@ -1,4 +1,4 @@
-﻿namespace PoSS.Models
+﻿namespace PoSS.Enums
 {
     public enum PaymentType
     {

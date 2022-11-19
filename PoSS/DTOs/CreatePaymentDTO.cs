@@ -1,4 +1,4 @@
-﻿using PoSS.Models;
+﻿using PoSS.Enums;
 
 namespace PoSS.DTOs
 {
