@@ -1,14 +1,11 @@
-﻿namespace PoSS.Models
+﻿using PoSS.Enums;
+
+namespace PoSS.Models
 {
-    public enum OrderStatus
+    public class OrderStatus
     {
-        NEW,
-        ACCEPTED,
-        IN_PROGRESS,
-        AWAITING_SHIPMENT,
-        COMPLETED,
-        REJECTED,
-        CANCELLED,
-        REFUNDED
+        public int Id { get; set; }
+        public int OrderId { get; set; }
+        public OrderStatusTypes Status { get; set; }
     }
 }
