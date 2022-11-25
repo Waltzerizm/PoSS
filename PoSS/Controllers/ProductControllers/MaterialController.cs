@@ -16,7 +16,7 @@ namespace PoSS.Controllers.ProductControllers
         //SHOULD
         //As an inventory manager, I want to manage raw materials that are used to make finished products. 
         /// <summary>
-        /// Creates material.
+        /// Create material.
         /// </summary>
         /// <param name="material"></param>
         /// <returns></returns>
@@ -29,7 +29,7 @@ namespace PoSS.Controllers.ProductControllers
 
         //As an inventory manager, I want to manage a list of materials that are required to make a certain product so that the consumption of materials could be tracked.
         /// <summary>
-        /// Gets material by Id.
+        /// Get material by Id.
         /// </summary>
         /// <param name="materialId"></param>
         /// <returns></returns>

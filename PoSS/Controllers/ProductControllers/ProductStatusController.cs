@@ -8,68 +8,62 @@ namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
     [Route("{tenantId}/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductStatusController : ControllerBase
     {
-        //As an inventory manager, I want to create a product so that finished products, sold by the business, are available in the catalog and tracked by the system.
         /// <summary>
-        /// Create product.
+        /// Create product status.
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="productStatus"></param>
         /// <returns></returns>
-        /// <response code="400">If some product details are missing.</response>
+        /// <response code="400">If some product status details are missing.</response>
         [HttpPost]
-        public IActionResult CreateProduct(ProductDTO product)
+        public IActionResult CreateProductStatus(ProductStatusDTO productStatus)
         {
             return Ok();
         }
 
-        //As an inventory manager, I want to view product details so that I can review how the product is described to the clients.
         /// <summary>
-        /// Get product by Id.
+        /// Get product status by Id.
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
         /// <response code="400">If product with such id does not exist.</response>
         [HttpGet]
         [Route("{productId}")]
-        public IActionResult GetProduct(int productId)
+        public IActionResult GetProductStatus(int productId)
         {
-            return Ok(new ProductDTO());
+            return Ok(new ProductStatusDTO());
         }
 
-        [HttpGet(Name = "GetProducts")]
-        public IActionResult GetProducts()
-        {
-            return Ok();
-        }
-
-        //As an inventory manager, I want to update product details.
+        //As an inventory manager, I want to retire a product so that it is no longer visible to the customers while preserving historical order data.
         /// <summary>
-        /// Update product by id.
+        /// Update product status by id (Enable/Disable, update quantity).
         /// </summary>
         /// <param name="productId"></param>
-        /// <param name="product"></param>
+        /// <param name="productStatus"></param>
         /// <returns></returns>
         /// <response code="400">If product with such id does not exist.</response>
-        /// <response code="400">If some product details are missing.</response>
+        /// <response code="400">If some product status details are missing.</response>
         [HttpPut]
         [Route("{productId}")]
-        public IActionResult UpdateProduct(int productId, ProductDTO product)
+        public IActionResult UpdateProductStatus(int productId, ProductStatusDTO productStatus)
         { 
             return Ok();
         }
 
         /// <summary>
-        /// Delete product by id.
+        /// Delete product status by id.
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
         /// <response code="400">If product with such id does not exist.</response>
         [HttpDelete]
         [Route("{productId}")]
-        public IActionResult DeleteProduct(int productId)
+        public IActionResult DeleteProductStatus(int productId)
         {
             return Ok();
         }
+
+
     }
 }

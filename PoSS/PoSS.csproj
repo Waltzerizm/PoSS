@@ -6,7 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+    <PropertyGroup>
+	    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+	
   <ItemGroup>
+    <PackageReference Include="GenFu" Version="1.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
