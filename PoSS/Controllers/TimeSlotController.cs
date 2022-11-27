@@ -106,13 +106,13 @@ namespace PoSS.Controllers
         /// <summary>
         /// Gets all time slots by date
         /// </summary>
-        /// <param name="employeeId"></param>
+        /// <param name="FromDate"></param>
+        /// <param name="ToDate"></param>
         /// <returns>Returns a list of time slots that match the date interval</returns>
         /// <response code="200">Returns time slot details</response>
         /// <response code="400">If provided dates are invalid</response>
         /// <response code="404">If no dates matched the search</response>
         [HttpGet]
-        [Route("{employeeId}")]
         [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -184,5 +184,6 @@ namespace PoSS.Controllers
 
             return Ok();
         }
+
     }
 }
