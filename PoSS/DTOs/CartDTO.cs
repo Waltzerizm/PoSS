@@ -8,6 +8,6 @@ namespace PoSS.DTOs
         public int? CustomerId { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime LastAccessed { get; set; }
-        public List<CartItem> Items { get; set; }
+        public List<CartItemDTO> Items { get; set; }
     }
 }
