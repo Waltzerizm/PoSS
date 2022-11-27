@@ -4,8 +4,11 @@ using PoSS.Models;
 
 namespace PoSS.Controllers
 {
+    /// <summary>
+    /// Controller for managing services.
+    /// </summary>
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     public class ServiceController : CRUDController<Service, ServiceDto>
     {
     }
