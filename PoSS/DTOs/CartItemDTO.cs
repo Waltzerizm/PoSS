@@ -1,14 +1,14 @@
-﻿namespace PoSS.Models
+﻿namespace PoSS.DTOs
 {
-    public class CartItem
+    public class CartItemDTO
     {
         /// <summary>
-        /// Id of the cart item
+        /// Cart item id
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Id of the cart
+        /// Cart id
         /// </summary>
         public int CartId { get; set; }
 
@@ -23,7 +23,17 @@
         public int? BundleId { get; set; }
 
         /// <summary>
-        /// Quantity of the item.
+        /// Name of the cart item.
+        /// </summary>
+        public string ItemName { get; set; }
+
+        /// <summary>
+        /// Price of the cart item.
+        /// </summary>
+        public decimal ItemPrice { get; set; }
+
+        /// <summary>
+        /// Quantity of the item in the cart.
         /// </summary>
         public int Quantity { get; set; }
     }
