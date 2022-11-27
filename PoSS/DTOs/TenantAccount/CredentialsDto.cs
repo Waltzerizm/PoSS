@@ -1,5 +1,6 @@
 namespace PoSS.DTOs
 {
+    # pragma warning disable CS1591
     public class CredentialsDto
     {
         public string? Email { get; set; }
