@@ -4,5 +4,6 @@ namespace PoSS.DTOs
     public class TokenDTO
     {
         public string Token { get; set; }
+        public int TenantId { get; set; }
     }
 }

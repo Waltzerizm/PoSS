@@ -19,7 +19,7 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of tax rates.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
-        public ActionResult<IEnumerable<TaxRateDto>> Get(int tenantId, int pageSize, int pageNumber)
+        public ActionResult<IEnumerable<TaxRate>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
         }

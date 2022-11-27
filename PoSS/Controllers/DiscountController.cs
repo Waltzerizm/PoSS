@@ -19,7 +19,7 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of discounts.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
-        public ActionResult<IEnumerable<DiscountDto>> Get(int tenantId, int pageSize, int pageNumber)
+        public ActionResult<IEnumerable<Discount>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
         }
@@ -32,7 +32,7 @@ namespace PoSS.Controllers
         /// <returns>Discount with the given id.</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<Discount> Get(int tenantId, int id)
+        public ActionResult<DiscountDto> Get(int tenantId, int id)
         {
             return Ok();
         }
