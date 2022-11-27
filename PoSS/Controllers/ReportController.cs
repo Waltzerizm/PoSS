@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PoSS.DTOs;
 
 namespace PoSS.Controllers
 {
@@ -6,18 +7,29 @@ namespace PoSS.Controllers
     /// Controller for reports.
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("{tenantId}/[controller]")]
     public class ReportController : ControllerBase
     {
         // A5.	As an accountant I want to create a detailed sales report so that I can calculate the relevant taxes and provide necessary financial data to the government. 
         /// <summary>
-        /// Endpoint for getting reports.
-        /// TODO: Figure out the format of a sales report.
+        /// Endpoint to get detailed sales report.
         /// </summary>
+        /// <param name="tenantId">Id of the store.</param>
         [HttpGet("DetailedSalesReport")]
-        public IActionResult GetDetailedSalesReport()
+        public ActionResult<DetailedSalesReportDTO> GetDetailedSalesReport(int tenantId)
         {
             return Ok();
         }
+
+        /// <summary>
+        /// Endpoint to get brief sales report.
+        /// </summary>
+        /// <param name="tenantId">Id of the store.</param>
+        [HttpGet("BriefSalesReport")]
+        public ActionResult<BriefSalesReportDTO> GetBriefSalesReport(int tenantId)
+        {
+            return Ok();
+        }
+
     }
 }
