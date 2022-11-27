@@ -45,7 +45,7 @@ namespace PoSS.Controllers
         [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<TimeSlotDTO> GetTimeSlotsByServiceId(int tenantId, int serviceId)
+        public ActionResult<List<TimeSlotDTO>> GetTimeSlotsByServiceId(int tenantId, int serviceId)
         {
             if (serviceId <= 0)
             {
@@ -68,7 +68,7 @@ namespace PoSS.Controllers
         [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<TimeSlotDTO> GetTimeSlotsByLocationId(int tenantId, int locationId)
+        public ActionResult<List<TimeSlotDTO>> GetTimeSlotsByLocationId(int tenantId, int locationId)
         {
             if (locationId <= 0)
             {
@@ -92,12 +92,12 @@ namespace PoSS.Controllers
         [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<TimeSlotDTO> GetTimeSlotsByEmployeeId(int tenantId, int employeeId)
+        public ActionResult<List<TimeSlotDTO>> GetTimeSlotsByEmployeeId(int tenantId, int employeeId)
         {
             if (employeeId <= 0)
             {
                 return BadRequest();
-            }            
+            }
 
             return Ok(new List<TimeSlotDTO>()); // return random generated item by id
         }
@@ -116,7 +116,7 @@ namespace PoSS.Controllers
         [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<TimeSlotDTO> GetTimeSlotsByDate(int tenantId, DateTime FromDate, DateTime ToDate)
+        public ActionResult<List<TimeSlotDTO>> GetTimeSlotsByDate(int tenantId, DateTime FromDate, DateTime ToDate)
         {
             return Ok(new List<TimeSlotDTO>()); // return random generated item by id
         }
