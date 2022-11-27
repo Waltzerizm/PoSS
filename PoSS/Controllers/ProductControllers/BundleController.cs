@@ -3,44 +3,78 @@ using Microsoft.AspNetCore.Mvc;
 using PoSS.Models.ProductModels;
 using System;
 using System.Numerics;
+using PoSS.DTOs.ProductDTOs;
 
 namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("{tenantId}/[controller]")]
     public class BundleController : ControllerBase
     {
         //As an inventory manager, I want to manage bundles so that common sets of products can be purchased at a special price.
-        [HttpPost(Name = "CreateBundle")]
-        public IActionResult CreateBundle([FromBody] Bundle value)
+        /// <summary>
+        /// Create bundle.
+        /// </summary>
+        /// <param name="bundle"></param>
+        /// <returns></returns>
+        /// <response code="400">If some bundle details are missing.</response>
+        [HttpPost]
+        public IActionResult CreateBundle(BundleDTO bundle)
         {
             return Ok();
         }
 
-        [HttpGet(Name = "GetBundle/{id}")]
-        public IActionResult GetBundle(int id)
+        /// <summary>
+        /// Get bundle by Id.
+        /// </summary>
+        /// <param name="bundleId"></param>
+        /// <returns></returns>
+        /// <response code="404">If bundle with such id does not exist.</response>
+        [HttpGet]
+        [Route("{bundleId}")]
+        [ProducesResponseType(typeof(BundleDTO), StatusCodes.Status200OK)]
+        public IActionResult GetBundle(int bundleId)
+        {
+            return Ok(new BundleDTO());
+        }
+
+        /// <summary>
+        /// Get a list of bundles.
+        /// </summary>
+        /// <param name="pageSize">Parameter to define how many records are in a page.</param>
+        /// <param name="page">Parameter to specify which page of records to return.</param>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(List<BundleDTO>), StatusCodes.Status200OK)]
+        public IActionResult GetBundles([FromQuery] int? pageSize, [FromQuery] int? page)
+        {
+            return Ok(new List<BundleDTO>());
+        }
+
+        /// <summary>
+        /// Update bundle by id.
+        /// </summary>
+        /// <param name="bundleId"></param>
+        /// <param name="bundle"></param>
+        /// <returns></returns>
+        /// <response code="404">If bundle with such id does not exist.</response>
+        /// <response code="400">If some bundle details are missing.</response>
+        [HttpPut]
+        [Route("{bundleId}")]
+        public IActionResult UpdateBundle(int bundleId, BundleDTO bundle)
         {
             return Ok();
         }
 
-        [HttpGet(Name = "GetBundles")]
-        public IActionResult GetBundles()
-        {
-            return Ok();
-        }
-
-        [HttpPut(Name = "UpdateBundle/{id}")]
-        public IActionResult UpdateBundle(int id, [FromBody] Bundle value)
-        {
-            if (id != value.id)
-            {
-                return BadRequest();
-            }
-            return Ok();
-        }
-
-        [HttpDelete(Name = "DeleteBundle/{id}")]
-        public IActionResult DeleteBundle(int id)
+        /// <summary>
+        /// Delete bundle by id.
+        /// </summary>
+        /// <param name="bundleId"></param>
+        /// <returns></returns>
+        /// <response code="404">If bundle with such id does not exist.</response>
+        [HttpDelete]
+        [Route("{bundleId}")]
+        public IActionResult DeleteBundle(int bundleId)
         {
             return Ok();
         }

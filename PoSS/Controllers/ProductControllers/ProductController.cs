@@ -2,78 +2,85 @@
 using Microsoft.AspNetCore.Mvc;
 using PoSS.Models.ProductModels;
 using System.Numerics;
+using PoSS.DTOs.ProductDTOs;
 
 namespace PoSS.Controllers.ProductControllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("{tenantId}/[controller]")]
     public class ProductController : ControllerBase
     {
         //As an inventory manager, I want to create a product so that finished products, sold by the business, are available in the catalog and tracked by the system.
-        [HttpPost(Name = "CreateProduct")]
-        public IActionResult CreateProduct([FromBody] Product value)
+        /// <summary>
+        /// Create product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        /// <response code="400">If some product details are missing.</response>
+        [HttpPost]
+        public IActionResult CreateProduct(ProductDTO product)
         {
             return Ok();
         }
 
         //As an inventory manager, I want to view product details so that I can review how the product is described to the clients.
-        [HttpGet(Name = "GetProduct/{id}")]
-        public IActionResult GetProduct(int id)
+        /// <summary>
+        /// Get product by Id.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// <response code="404">If product with such id does not exist.</response>
+        [HttpGet]
+        [Route("{productId}")]
+        [ProducesResponseType(typeof(ProductDTO), StatusCodes.Status200OK)]
+        public IActionResult GetProduct(int productId)
         {
-            return Ok();
+            return Ok(new ProductDTO());
         }
 
-        [HttpGet(Name = "GetProducts")]
-        public IActionResult GetProducts()
+        /// <summary>
+        /// Get a list of products.
+        /// </summary>
+        /// <param name="materialId">Parameter to return all products that contain one or more specified materials.</param>
+        /// <param name="categoryId">Parameter to return all products that belong in one or more specified categories.</param>
+        /// <param name="brandId">Parameter to return all products assigned to specific brands.</param>
+        /// <param name="pageSize">Parameter to define how many records are in a page.</param>
+        /// <param name="page">Parameter to specify which page of records to return.</param>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(List<ProductDTO>), StatusCodes.Status200OK)]
+        public IActionResult GetProducts([FromQuery] int[]? materialId, [FromQuery] int[]? categoryId, [FromQuery] int[]? brandId, [FromQuery] int? pageSize, [FromQuery] int? page)
         {
-            return Ok();
+            return Ok(new List<ProductDTO>());
         }
 
         //As an inventory manager, I want to update product details.
-        [HttpPut(Name = "UpdateProduct/{id}")]
-        public IActionResult UpdateProduct(int id, [FromBody] Product value)
-        {
-            if (id != value.id)
-            {
-                return BadRequest();
-            }
+        /// <summary>
+        /// Update product by id.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        /// <response code="404">If product with such id does not exist.</response>
+        /// <response code="400">If some product details are missing.</response>
+        [HttpPut]
+        [Route("{productId}")]
+        public IActionResult UpdateProduct(int productId, ProductDTO product)
+        { 
             return Ok();
         }
 
-        //As an inventory manager, I want to retire a product so that it is no longer visible to the customers while preserving historical order data.
-        [HttpPut(Name = "DisableProduct/{id}")]
-        public IActionResult DisableProduct(int id, [FromBody] Product value)
-        {
-            if (id != value.id)
-            {
-                return BadRequest();
-            }
-            if (!value.is_disabled)
-            {
-                return BadRequest();
-            }
-            return Ok();
-        }
-
-        [HttpPut(Name = "EnableProduct/{id}")]
-        public IActionResult EnableProduct(int id, [FromBody] Product value)
-        {
-            if (id != value.id)
-            {
-                return BadRequest();
-            }
-            if (value.is_disabled)
-            {
-                return BadRequest();
-            }
-            return Ok();
-        }
-
-        [HttpDelete(Name = "DeleteProduct/{id}")]
-        public IActionResult DeleteProduct(int id)
+        /// <summary>
+        /// Delete product by id.
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        /// <response code="404">If product with such id does not exist.</response>
+        [HttpDelete]
+        [Route("{productId}")]
+        public IActionResult DeleteProduct(int productId)
         {
             return Ok();
         }
-
     }
 }
