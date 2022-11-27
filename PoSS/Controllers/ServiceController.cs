@@ -41,6 +41,22 @@ namespace PoSS.Controllers
         }
 
         /// <summary>
+        /// Endpoint to get multiple services with applied filter.
+        /// </summary>
+        /// <param name="pageSize">The maximum amount of services in response.</param>
+        /// <param name="pageNumber">The page number of services to return.</param>
+        /// <param name="tenantId">Id of the store.</param>
+        /// <param name="filter">Filter to apply to the services.</param>
+        /// <returns>A list of services.</returns>
+        [HttpPost("{pageSize}/{pageNumber}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<IEnumerable<Service>> Get(int tenantId, ServiceFilterDto filter, int pageSize, int pageNumber)
+        {
+            return Ok();
+        }
+
+        /// <summary>
         /// Endpoint to create a new service.
         /// </summary>
         /// <param name="service">Service to create.</param>
