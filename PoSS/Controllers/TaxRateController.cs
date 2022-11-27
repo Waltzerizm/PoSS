@@ -8,7 +8,7 @@ namespace PoSS.Controllers
     /// Controller for managing tax rates.
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("{tenantId}/[controller]")]
     public class TaxRateController : ControllerBase
     {
         /// <summary>
@@ -16,9 +16,10 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="pageSize">The maximum amount of tax rates in response.</param>
         /// <param name="pageNumber">The page number of tax rates to return.</param>
+        /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of tax rates.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
-        public ActionResult<IEnumerable<TaxRateDto>> Get(int pageSize, int pageNumber)
+        public ActionResult<IEnumerable<TaxRateDto>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
         }
@@ -27,10 +28,11 @@ namespace PoSS.Controllers
         /// Endpoint to get a single tax rate.
         /// </summary>
         /// <param name="id">Id of the tax rate to get</param>
+        /// <param name="tenantId">Id of the store.</param>
         /// <returns>Tax rate with the given id.</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<TaxRate> Get(int id)
+        public ActionResult<TaxRate> Get(int tenantId, int id)
         {
             return Ok();
         }
@@ -50,8 +52,9 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="id">Id of the tax rate to update.</param>
         /// <param name="taxRate">Tax rate to update.</param>
+        /// <param name="tenantId">Id of the store.</param>
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] TaxRateDto taxRate)
+        public IActionResult Put(int tenantId, int id, [FromBody] TaxRateDto taxRate)
         {
             return Ok();
         }
@@ -60,8 +63,9 @@ namespace PoSS.Controllers
         /// Endpoint to delete a tax rate.
         /// </summary>
         /// <param name="id">Id of the tax rate to delete.</param>
+        /// <param name="tenantId">Id of the store.</param>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int tenantId, int id)
         {
             return Ok();
         }
@@ -70,20 +74,24 @@ namespace PoSS.Controllers
         /// <summary>
         /// Endpoint for assigning tax rate to an item.
         /// </summary>
+        /// <param name="tenantId">Id of the store.</param>
+        /// <param name="dto"></param>
         [HttpPost("AssignTaxRateToItem")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AssignTaxRateToItem(AssignTaxRateToItemDTO dto)
+        public IActionResult AssignTaxRateToItem(int tenantId, AssignTaxRateToItemDTO dto)
         {
             return Ok();
         }
 
         // A4.	As an accountant, I want to apply tax rate to categories so that all products in the selected category are assigned the same tax rate automatically.
         /// <summary>
-        /// Endpoint for assigning tax rate to a category.
+        /// Endpoint for applying tax rate to all items in the category.
         /// </summary>
-        [HttpPost("AssignTaxRateToCategory")]
+        /// <param name="tenantId">Id of the store.</param>
+        /// <param name="dto"></param>
+        [HttpPost("ApplyTaxRateToCategory")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AssignTaxRateToCategory(AssignTaxRateToCategoryDTO dto)
+        public IActionResult ApplyTaxRateToCategory(int tenantId, ApplyTaxRateToCategoryDTO dto)
         {
             return Ok();
         }

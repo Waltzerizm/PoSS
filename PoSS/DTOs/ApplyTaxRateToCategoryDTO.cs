@@ -3,7 +3,7 @@ namespace PoSS.DTOs
     /// <summary>
     /// DTO for assigning a tax rate to a category.
     /// </summary>
-    public class AssignTaxRateToCategoryDTO
+    public class ApplyTaxRateToCategoryDTO
     {
         /// <summary>
         /// Id of the category to assign the tax rate to.
