@@ -1,5 +1,6 @@
 namespace PoSS.DTOs
 {
+    #pragma warning disable CS1591
     public class AssignTaxRateToItemDTO
     {
         public int TaxRateId { get; set; }
