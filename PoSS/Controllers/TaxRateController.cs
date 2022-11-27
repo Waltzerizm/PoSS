@@ -19,6 +19,9 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of tax rates.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<IEnumerable<TaxRate>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
@@ -31,6 +34,8 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>Tax rate with the given id.</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<TaxRate> Get(int tenantId, int id)
         {
@@ -42,6 +47,9 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="taxRate">Tax rate to create.</param>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Post([FromBody] TaxRateDto taxRate)
         {
             return Ok();
@@ -54,6 +62,10 @@ namespace PoSS.Controllers
         /// <param name="taxRate">Tax rate to update.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Put(int tenantId, int id, [FromBody] TaxRateDto taxRate)
         {
             return Ok();
@@ -65,6 +77,9 @@ namespace PoSS.Controllers
         /// <param name="id">Id of the tax rate to delete.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete(int tenantId, int id)
         {
             return Ok();
@@ -77,7 +92,10 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <param name="dto"></param>
         [HttpPost("AssignTaxRateToItem")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AssignTaxRateToItem(int tenantId, AssignTaxRateToItemDTO dto)
         {
             return Ok();
@@ -90,7 +108,10 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <param name="dto"></param>
         [HttpPost("ApplyTaxRateToCategory")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult ApplyTaxRateToCategory(int tenantId, ApplyTaxRateToCategoryDTO dto)
         {
             return Ok();

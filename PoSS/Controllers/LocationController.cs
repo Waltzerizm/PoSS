@@ -19,6 +19,9 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of business locations.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<IEnumerable<Location>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
@@ -31,6 +34,8 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>Business location with the given id.</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<LocationDto> Get(int tenantId, int id)
         {
@@ -43,6 +48,9 @@ namespace PoSS.Controllers
         /// <param name="item">Business location to create.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Post(int tenantId, [FromBody] LocationDto item)
         {
             return Ok();
@@ -55,6 +63,10 @@ namespace PoSS.Controllers
         /// <param name="item">Business location to update.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Put(int tenantId, int id, [FromBody] LocationDto item)
         {
             return Ok();
@@ -66,6 +78,9 @@ namespace PoSS.Controllers
         /// <param name="id">Id of the business location to delete.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete(int tenantId, int id)
         {
             return Ok();

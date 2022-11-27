@@ -16,6 +16,8 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="tenantId">Id of the store.</param>
         [HttpGet("DetailedSalesReport")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<DetailedSalesReportDTO> GetDetailedSalesReport(int tenantId)
         {
             return Ok();
@@ -26,6 +28,8 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="tenantId">Id of the store.</param>
         [HttpGet("BriefSalesReport")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<BriefSalesReportDTO> GetBriefSalesReport(int tenantId)
         {
             return Ok();

@@ -19,6 +19,8 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of services.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<IEnumerable<Service>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
@@ -31,6 +33,7 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>Service with the given id.</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<Service> Get(int tenantId, int id)
         {
@@ -42,6 +45,9 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="service">Service to create.</param>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Post([FromBody] ServiceDto service)
         {
             return Ok();
@@ -54,6 +60,10 @@ namespace PoSS.Controllers
         /// <param name="service">Service to update.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Put(int tenantId, int id, [FromBody] ServiceDto service)
         {
             return Ok();
@@ -65,6 +75,9 @@ namespace PoSS.Controllers
         /// <param name="id">Id of the service to delete.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete(int tenantId, int id)
         {
             return Ok();

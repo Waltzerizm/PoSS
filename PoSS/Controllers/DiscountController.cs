@@ -19,6 +19,9 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>A list of discounts.</returns>
         [HttpGet("{pageSize}/{pageNumber}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public ActionResult<IEnumerable<Discount>> Get(int tenantId, int pageSize, int pageNumber)
         {
             return Ok();
@@ -31,6 +34,8 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <returns>Discount with the given id.</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<DiscountDto> Get(int tenantId, int id)
         {
@@ -42,6 +47,9 @@ namespace PoSS.Controllers
         /// </summary>
         /// <param name="discount">Discount to create.</param>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult Post([FromBody] DiscountDto discount)
         {
             return Ok();
@@ -54,6 +62,10 @@ namespace PoSS.Controllers
         /// <param name="discount">Discount to update.</param>
         /// <param name="tenantId">Id of the store.</param>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Put(int tenantId, int id, [FromBody] DiscountDto discount)
         {
             return Ok();
@@ -66,6 +78,10 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <param name="dto"></param>
         [HttpPost("AssignDiscountToItem")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AssignDiscountToItem(int tenantId, AssignDiscountToItemDTO dto)
         {
             return Ok();
@@ -78,6 +94,10 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <param name="dto"></param>
         [HttpPost("AssignDiscountToBrand")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AssignDiscountToBrand(int tenantId, AssignDiscountToBrandDTO dto)
         {
             return Ok();
@@ -90,6 +110,10 @@ namespace PoSS.Controllers
         /// <param name="tenantId">Id of the store.</param>
         /// <param name="dto"></param>
         [HttpPost("AssignDiscountToCategory")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AssignDiscountToCategory(int tenantId, AssignDiscountToCategoryDTO dto)
         {
             return Ok();
