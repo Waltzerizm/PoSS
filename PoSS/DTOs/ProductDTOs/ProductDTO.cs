@@ -10,5 +10,6 @@ namespace PoSS.DTOs.ProductDTOs
         public int brand_id { get; set; }
         public int tax_rate_id { get; set; }
         public List<ProductMaterial> materials { get; set; }
+        public List<ProductCategory> categories { get; set; }
     }
 }

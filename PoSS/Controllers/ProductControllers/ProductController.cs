@@ -41,12 +41,15 @@ namespace PoSS.Controllers.ProductControllers
         /// <summary>
         /// Get a list of products.
         /// </summary>
+        /// <param name="materialId">Parameter to return all products that contain one or more specified materials.</param>
+        /// <param name="categoryId">Parameter to return all products that belong in one or more specified categories.</param>
+        /// <param name="brandId">Parameter to return all products assigned to specific brands.</param>
         /// <param name="pageSize">Parameter to define how many records are in a page.</param>
         /// <param name="page">Parameter to specify which page of records to return.</param>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(List<ProductDTO>), StatusCodes.Status200OK)]
-        public IActionResult GetProducts([FromQuery] int? pageSize, [FromQuery] int? page)
+        public IActionResult GetProducts([FromQuery] int[]? materialId, [FromQuery] int[]? categoryId, [FromQuery] int[]? brandId, [FromQuery] int? pageSize, [FromQuery] int? page)
         {
             return Ok(new List<ProductDTO>());
         }
