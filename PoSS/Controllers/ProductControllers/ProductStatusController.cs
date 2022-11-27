@@ -27,9 +27,10 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        /// <response code="400">If product with such id does not exist.</response>
+        /// <response code="404">If product with such id does not exist.</response>
         [HttpGet]
         [Route("{productId}")]
+        [ProducesResponseType(typeof(ProductStatusDTO), StatusCodes.Status200OK)]
         public IActionResult GetProductStatus(int productId)
         {
             return Ok(new ProductStatusDTO());
@@ -42,7 +43,7 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="productId"></param>
         /// <param name="productStatus"></param>
         /// <returns></returns>
-        /// <response code="400">If product with such id does not exist.</response>
+        /// <response code="404">If product with such id does not exist.</response>
         /// <response code="400">If some product status details are missing.</response>
         [HttpPut]
         [Route("{productId}")]
@@ -56,7 +57,7 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
-        /// <response code="400">If product with such id does not exist.</response>
+        /// <response code="404">If product with such id does not exist.</response>
         [HttpDelete]
         [Route("{productId}")]
         public IActionResult DeleteProductStatus(int productId)

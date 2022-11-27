@@ -33,20 +33,27 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="materialId"></param>
         /// <returns></returns>
-        /// <response code="400">If material with such id does not exist.</response>
+        /// <response code="404">If material with such id does not exist.</response>
         [HttpGet]
         [Route("{materialId}")]
+        [ProducesResponseType(typeof(MaterialDTO), StatusCodes.Status200OK)]
         public IActionResult GetMaterial(int materialId)
         {
             return Ok(new MaterialDTO());
         }
 
         //As an inventory manager, I want to manage a list of materials that are required to make a certain product so that the consumption of materials could be tracked.
-        //? get page of material?
-        [HttpGet(Name = "GetMaterials")]
-        public IActionResult GetMaterials()
+        /// <summary>
+        /// Get a list of materials.
+        /// </summary>
+        /// <param name="pageSize">Parameter to define how many records are in a page.</param>
+        /// <param name="page">Parameter to specify which page of records to return.</param>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(List<MaterialDTO>), StatusCodes.Status200OK)]
+        public IActionResult GetMaterials([FromQuery] int? pageSize, [FromQuery] int? page)
         {
-            return Ok();
+            return Ok(new List<MaterialDTO>());
         }
 
         //As an inventory manager, I want to update the quantity of materials so that the system always reflects the actual quantity of physical materials as they are consumed and resupplied.
@@ -56,7 +63,7 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="materialId"></param>
         /// <param name="material"></param>
         /// <returns></returns>
-        /// <response code="400">If material with such id does not exist.</response>
+        /// <response code="404">If material with such id does not exist.</response>
         /// <response code="400">If some material details are missing.</response>
         [HttpPut]
         [Route("{materialId}")]
@@ -70,7 +77,7 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="materialId"></param>
         /// <returns></returns>
-        /// <response code="400">If material with such id does not exist.</response>
+        /// <response code="404">If material with such id does not exist.</response>
         [HttpDelete]
         [Route("{materialId}")]
         public IActionResult DeleteMaterial(int materialId)

@@ -21,7 +21,7 @@ namespace PoSS.Controllers.ProductControllers
         [HttpPost]
         public IActionResult CreateBundle(BundleDTO bundle)
         {
-            return Ok(new BundleDTO());
+            return Ok();
         }
 
         /// <summary>
@@ -29,18 +29,26 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="bundleId"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
         [HttpGet]
         [Route("{bundleId}")]
+        [ProducesResponseType(typeof(BundleDTO), StatusCodes.Status200OK)]
         public IActionResult GetBundle(int bundleId)
         {
-            return Ok();
+            return Ok(new BundleDTO());
         }
 
-        [HttpGet(Name = "GetBundles")]
-        public IActionResult GetBundles()
+        /// <summary>
+        /// Get a list of bundles.
+        /// </summary>
+        /// <param name="pageSize">Parameter to define how many records are in a page.</param>
+        /// <param name="page">Parameter to specify which page of records to return.</param>
+        /// <returns></returns>
+        [HttpGet]
+        [ProducesResponseType(typeof(List<BundleDTO>), StatusCodes.Status200OK)]
+        public IActionResult GetBundles([FromQuery] int? pageSize, [FromQuery] int? page)
         {
-            return Ok();
+            return Ok(new List<BundleDTO>());
         }
 
         /// <summary>
@@ -49,7 +57,7 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="bundleId"></param>
         /// <param name="bundle"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
         /// <response code="400">If some bundle details are missing.</response>
         [HttpPut]
         [Route("{bundleId}")]
@@ -63,7 +71,7 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="bundleId"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
         [HttpDelete]
         [Route("{bundleId}")]
         public IActionResult DeleteBundle(int bundleId)

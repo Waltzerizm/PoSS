@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PoSS.DTOs.ProductDTOs;
 using PoSS.Models.ProductModels;
 using System;
 using System.Numerics;
@@ -28,11 +29,12 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="bundleId"></param>
         /// <param name="productId"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
-        /// <response code="400">If product with such id does not exist.</response>
-        /// <response code="400">If product with such id is not assigned to bundle with such id.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
+        /// <response code="404">If product with such id does not exist.</response>
+        /// <response code="404">If product with such id is not assigned to bundle with such id.</response>
         [HttpGet]
         [Route("{bundleId}/{productId}")]
+        [ProducesResponseType(typeof(BundleProduct), StatusCodes.Status200OK)]
         public IActionResult GetBundleProduct(int bundleId, int productId)
         {
             return Ok(new BundleProduct());
@@ -43,9 +45,10 @@ namespace PoSS.Controllers.ProductControllers
         /// </summary>
         /// <param name="bundleId"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
         [HttpGet]
         [Route("{bundleId}")]
+        [ProducesResponseType(typeof(List<BundleProduct>), StatusCodes.Status200OK)]
         public IActionResult GetBundleProducts(int bundleId)
         {
             return Ok(new List<BundleProduct>());
@@ -58,9 +61,9 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="productId"></param>
         /// <param name="product"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
-        /// <response code="400">If product with such id does not exist.</response>
-        /// <response code="400">If product with such id is not assigned to bundle with such id.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
+        /// <response code="404">If product with such id does not exist.</response>
+        /// <response code="404">If product with such id is not assigned to bundle with such id.</response>
         /// <response code="400">If some class details are missing.</response>
         [HttpPut]
         [Route("{bundleId}/{productId}")]
@@ -75,9 +78,9 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="bundleId"></param>
         /// <param name="productId"></param>
         /// <returns></returns>
-        /// <response code="400">If bundle with such id does not exist.</response>
-        /// <response code="400">If product with such id does not exist.</response>
-        /// <response code="400">If product with such id is not assigned to bundle with such id.</response>
+        /// <response code="404">If bundle with such id does not exist.</response>
+        /// <response code="404">If product with such id does not exist.</response>
+        /// <response code="404">If product with such id is not assigned to bundle with such id.</response>
         [HttpDelete]
         [Route("{bundleId}/{productId}")]
         public IActionResult DeleteBundleProduct(int bundleId, int productId)
