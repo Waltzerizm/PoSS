@@ -1,13 +1,9 @@
 ﻿using PoSS.Enums;
 
-namespace PoSS.Models
+namespace PoSS.DTOs
 {
-    public class OrderStatus
+    public class OrderStatusDTO
     {
-        /// <summary>
-        /// Order status ID
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// Order ID
         /// </summary>
