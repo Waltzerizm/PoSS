@@ -33,6 +33,51 @@ namespace PoSS.Controllers
             return Ok(new TimeSlotDTO()); // return random generated item by id
         }
 
+        /// <summary>
+        /// Gets all time slots by service id
+        /// </summary>
+        /// <param name="serviceId"></param>
+        /// <returns>Returns a list of time slots that match the service ID</returns>
+        /// <response code="400">If time slot service ID is less or equal to 0</response>
+        /// <response code="404">If no time slot service ID matched the search</response>
+        [HttpGet]
+        [Route("{serviceId}")]
+        [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<TimeSlotDTO> GetTimeSlotsByServiceId(int tenantId, int serviceId)
+        {
+            if (serviceId <= 0)
+            {
+                return BadRequest();
+            }
+
+            return Ok(new List<TimeSlotDTO>()); // return random generated item by id
+        }
+
+        /// <summary>
+        /// Gets all time slots by location id
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <returns>Returns a list of time slots that match the location ID</returns>
+        /// <response code="200">Returns time slot details</response>
+        /// <response code="400">If time slot location ID is less or equal to 0</response>
+        /// <response code="404">If no time slot location ID matched the search</response>
+        [HttpGet]
+        [Route("{locationId}")]
+        [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<TimeSlotDTO> GetTimeSlotsByLocationId(int tenantId, int locationId)
+        {
+            if (locationId <= 0)
+            {
+                return BadRequest();
+            }
+
+            return Ok(new List<TimeSlotDTO>()); // return random generated item by id
+        }
+
         // As a service provider, I want to view all time slots that are assigned to me so that I can plan my agenda.
         /// <summary>
         /// Gets all time slots by employee id
@@ -54,6 +99,25 @@ namespace PoSS.Controllers
                 return BadRequest();
             }            
 
+            return Ok(new List<TimeSlotDTO>()); // return random generated item by id
+        }
+
+        // As a service provider, I want to view all time slots that are assigned to me so that I can plan my agenda.
+        /// <summary>
+        /// Gets all time slots by date
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns>Returns a list of time slots that match the date interval</returns>
+        /// <response code="200">Returns time slot details</response>
+        /// <response code="400">If provided dates are invalid</response>
+        /// <response code="404">If no dates matched the search</response>
+        [HttpGet]
+        [Route("{employeeId}")]
+        [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<TimeSlotDTO> GetTimeSlotsByDate(int tenantId, DateTime FromDate, DateTime ToDate)
+        {
             return Ok(new List<TimeSlotDTO>()); // return random generated item by id
         }
 
