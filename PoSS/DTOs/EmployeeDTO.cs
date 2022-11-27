@@ -1,11 +1,7 @@
-﻿namespace PoSS.Models
+﻿namespace PoSS.DTOs
 {
-    public class Employee
+    public class EmployeeDTO
     {
-        /// <summary>
-        /// ID of the employee
-        /// </summary>
-        public int Id { get; set; }
         /// <summary>
         /// First name of the employee
         /// </summary>

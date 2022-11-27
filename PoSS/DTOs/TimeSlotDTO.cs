@@ -1,13 +1,9 @@
-﻿namespace PoSS.Models
+﻿namespace PoSS.DTOs
 {
-    public class TimeSlot
+    public class TimeSlotDTO
     {
         /// <summary>
-        /// ID of the time slot
-        /// </summary>
-        public int Id { get; set; }
-        /// <summary>
-        /// ID of the service is provided during the time slot
+        /// ID of the service that is provided during the time slot
         /// </summary>
         public int ServiceId { get; set; }
         /// <summary>

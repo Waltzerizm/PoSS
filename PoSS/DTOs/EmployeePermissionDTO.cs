@@ -1,6 +1,6 @@
-﻿namespace PoSS.Models
+﻿namespace PoSS.DTOs
 {
-    public class EmployeePermission
+    public class EmployeePermissionDTO
     {
         /// <summary>
         /// Permission ID
