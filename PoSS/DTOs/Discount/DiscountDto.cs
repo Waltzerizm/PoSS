@@ -1,5 +1,6 @@
 namespace PoSS.DTOs
 {
+    #pragma warning disable CS1591
     public class DiscountDto
     {
         public string Name { get; set; }
