@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PoSS.Models;
 using PoSS.DTOs;
+using PoSS.DTOs.ProductDTOs;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,7 +12,7 @@ namespace PoSS.Controllers
     public class TimeSlotController : ControllerBase
     {
         /// <summary>
-        /// Gets time slot details
+        /// Gets time slot by id
         /// </summary>
         /// <param name="timeSlotId"></param>
         /// <returns>Returns the details of the time slot</returns>
@@ -34,27 +35,30 @@ namespace PoSS.Controllers
         }
 
         /// <summary>
-        /// Gets all time slots by service id
+        /// Get a list of time slots
         /// </summary>
-        /// <param name="serviceId"></param>
-        /// <returns>Returns a list of time slots that match the service ID</returns>
+        /// <param name="serviceId">Returns a list of time slots that match the service ID</param>
+        /// <param name="locationId">Returns a list of time slots that match the location ID</param>
+        /// <param name="employeeId">Returns a list of time slots that match the employee ID</param>
+        /// <param name="FromDate"></param>
+        /// <param name="ToDate"></param>
+        /// <param name="pageSize">Parameter to define how many records are in a page.</param>
+        /// <param name="pageNumber">Parameter to specify which page of records to return.</param>
+        /// <returns></returns>
         /// <response code="400">If time slot service ID is less or equal to 0</response>
         /// <response code="404">If no time slot service ID matched the search</response>
-        [HttpGet]
-        [Route("{serviceId}")]
-        [ProducesResponseType(typeof(TimeSlotDTO), StatusCodes.Status200OK)]
+        [HttpGet("{pageSize}/{pageNumber}")]
+        [ProducesResponseType(typeof(List<TimeSlotDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<List<TimeSlotDTO>> GetTimeSlotsByServiceId(int tenantId, int serviceId)
+        public ActionResult<List<TimeSlotDTO>> GetTimeSlots([FromQuery] int[]? serviceId, [FromQuery] int[]? locationId, [FromQuery] int[]? employeeId, 
+                                                            [FromQuery] string? FromDate, [FromQuery] string? ToDate,
+                                                            int pageSize, int pageNumber)
         {
-            if (serviceId <= 0)
-            {
-                return BadRequest();
-            }
-
-            return Ok(new List<TimeSlotDTO>()); // return random generated item by id
+            return Ok(new List<TimeSlotDTO>()); 
         }
 
+        /*
         /// <summary>
         /// Gets all time slots by location id
         /// </summary>
@@ -120,6 +124,7 @@ namespace PoSS.Controllers
         {
             return Ok(new List<TimeSlotDTO>()); // return random generated item by id
         }
+        */
 
         // As a service provider, I want to have an ability to book a time slot on behalf of a customer so that
         // I can reserve time for a customer who calls by phone or visits a store.
