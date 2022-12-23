@@ -42,11 +42,12 @@ namespace PoSS.Controllers.ProductControllers
         /// Get a list of bundles.
         /// </summary>
         /// <param name="pageSize">Parameter to define how many records are in a page.</param>
-        /// <param name="page">Parameter to specify which page of records to return.</param>
+        /// <param name="pageNumber">Parameter to specify which page of records to return.</param>
         /// <returns></returns>
         [HttpGet]
+        [Route("{pageSize}/{pageNumber}")]
         [ProducesResponseType(typeof(List<BundleDTO>), StatusCodes.Status200OK)]
-        public IActionResult GetBundles([FromQuery] int? pageSize, [FromQuery] int? page)
+        public IActionResult GetBundles(int pageSize, int pageNumber)
         {
             return Ok(new List<BundleDTO>());
         }

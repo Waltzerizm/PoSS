@@ -50,8 +50,9 @@ namespace PoSS.Controllers.ProductControllers
         /// <param name="page">Parameter to specify which page of records to return.</param>
         /// <returns></returns>
         [HttpGet]
+        [Route("{pageSize}/{page}")]
         [ProducesResponseType(typeof(List<MaterialDTO>), StatusCodes.Status200OK)]
-        public IActionResult GetMaterials([FromQuery] int? pageSize, [FromQuery] int? page)
+        public IActionResult GetMaterials(int pageSize, int page)
         {
             return Ok(new List<MaterialDTO>());
         }
